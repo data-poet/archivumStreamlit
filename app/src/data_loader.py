@@ -2,8 +2,10 @@
 # ------------------------------------------------------------------------------------------------ #
 # IMPORT
 import os
+import re
 import logging
 import pandas as pd
+import streamlit as st
 from r4ven_utils.log4me import r4venLogManager
 
 # RELATIVE IMPORTS
@@ -25,6 +27,14 @@ def filter_sheet_names(sheet_list: list, exclude_list: list) -> list:
     """
     return [s for s in sheet_list if s not in exclude_list]
 
+def _normalize_string(value):
+        if not isinstance(value, str):
+            return value
+
+        # remove múltiplas quebras no início → mantém só 1
+        value = re.sub(r'^\n+', '\n', value)
+
+        return value
 
 # ------------------------------------------------------------------------------------------------ #
 # CLASSE PARA LEITURA DE EXCEL
@@ -61,19 +71,6 @@ class ExcelReader:
             return []
 
     def load_sheets(self, ignore_sheets: list = None) -> dict:
-        """
-        Carrega todas as abas do arquivo Excel para um dicionário de DataFrames.
-
-        Parâmetros
-        ----------
-        ignore_sheets : list
-            Lista com os nomes das abas que devem ser ignoradas. Padrão = None.
-
-        Retorno
-        -------
-        dict
-            Dicionário onde a chave é o nome da aba e o valor é o DataFrame correspondente.
-        """
         log4me = self.get_logger()
         ignore_sheets = set(ignore_sheets or [])
         sheets_dict = {}
@@ -91,13 +88,27 @@ class ExcelReader:
 
             try:
                 df = pd.read_excel(self.file_path, sheet_name=sheet)
+
+                # 🔥 1. fillna global
+                df = df.fillna('')
+
+                # 🔥 2. normalizar apenas colunas string (muito mais eficiente)
+                str_cols = df.select_dtypes(include=["object"]).columns
+
+                for col in str_cols:
+                    df[col] = df[col].apply(_normalize_string)
+
                 sheets_dict[sheet] = df
+
                 log4me.info(f"Aba carregada com sucesso: {sheet}")
+
             except Exception as e:
                 log4me.error(f"Erro ao carregar a aba '{sheet}': {e}")
 
         return sheets_dict
 
+
+@st.cache_data(show_spinner="Carregando dados...", ttl=3600)
 def read_excel_data(file_name: str) -> dict:
     """
     Página principal do Streamlit responsável por:

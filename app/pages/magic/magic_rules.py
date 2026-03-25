@@ -32,7 +32,6 @@ def skills_cost_in_points(df_skills: dict, df_magic_rules: dict) -> None:
     with st.expander("Custo em pontos dos Feitiços"):
 
         df_mental = df_skills[skills_mental]
-        df_mental = df_mental.fillna('').convert_dtypes()
         df_mental.rename(columns={"skill_final_level": "Nível de Habilidade"}, inplace=True)
 
         st.dataframe(df_mental, width='stretch', hide_index=True)
@@ -44,7 +43,6 @@ def skills_cost_in_points(df_skills: dict, df_magic_rules: dict) -> None:
     with st.expander("O que seu nível de habilidade em um feitiço significa?"):
 
         df_overview = df_magic_rules[spell_levels]
-        df_overview = df_overview.fillna('').convert_dtypes()
 
         # Cabeçalho (fora do loop)
         col1, col2, col3, col4 = st.columns(4)

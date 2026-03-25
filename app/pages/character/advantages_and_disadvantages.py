@@ -74,7 +74,6 @@ def advantages(df_dict: dict) -> None:
     """Vantagens"""
 
     df = df_dict["advantages"]
-    df = df.fillna('')
 
     # Filtros
     with st.expander(f"🎯 Filtros de Vantages"):
@@ -123,7 +122,6 @@ def disadvantages(df_dict: dict) -> None:
     """Desvantagens"""
 
     df = df_dict["disadvantages"]
-    df = df.fillna('')
 
     # Filtros
     with st.expander(f"🎯 Filtros de Desvantagens"):

@@ -29,11 +29,9 @@ def get_row_by_tier(df: pd.DataFrame, tier: str):
 
 def render_armor_page(
     df_armors: pd.DataFrame,
-    tier_set: str = DEFAULT_TIER_SET
-):
+    tier_set: str = DEFAULT_TIER_SET):
 
     df = df_armors.copy()
-    df = df.fillna('')
 
     tier_map = TIER_NAME_SETS[tier_set]
 
@@ -212,11 +210,9 @@ def render_armor_page(
 
 def render_shield_page(
     df_shields: pd.DataFrame,
-    tier_set: str = DEFAULT_TIER_SET
-):
+    tier_set: str = DEFAULT_TIER_SET):
 
     df = df_shields.copy()
-    df = df.fillna('')
 
     tier_map = TIER_NAME_SETS[tier_set]
 

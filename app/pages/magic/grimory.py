@@ -1,10 +1,7 @@
 # ------------------------------------------------------------------------------------------------ #
 # IMPORTS
 
-import os
 import streamlit as st
-from itertools import product
-import math
 import pandas as pd
 
 import warnings
@@ -366,12 +363,15 @@ def grimory(df_dict: dict):
 
     st.header("Grimório", divider="grey")
 
-    # MAPA: escola → categoria
-    escola_para_categoria = {}
+    @st.cache_data
+    def build_escola_categoria_map(arcanum_dict):
+        return {
+            escola: categoria
+            for categoria, archetypes in arcanum_dict.items()
+            for escola in archetypes.keys()
+        }
 
-    for categoria, archetypes in arcanum_dict.items():
-        for escola in archetypes.keys():
-            escola_para_categoria[escola] = categoria
+    escola_para_categoria = build_escola_categoria_map(arcanum_dict)
 
     # Filtrar apenas escolas presentes no df_dict
     categorias_disponiveis = {}

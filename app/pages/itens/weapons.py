@@ -33,15 +33,13 @@ def calculate_hex(length):
 
 def render_melee_weapons(
     df_melee: pd.DataFrame,
-    tier_set: str = DEFAULT_TIER_SET
-):
+    tier_set: str = DEFAULT_TIER_SET):
     """
     Renderiza cada arma corpo-a-corpo em modo detalhado,
     com todos os campos e layout visual expandido.
     """
 
     df = df_melee.copy()
-    df = df.fillna('')
 
     tier_map = TIER_NAME_SETS[tier_set]
 
@@ -241,15 +239,13 @@ def render_melee_weapons(
 
 def render_ranged_weapons(
     df_ranged: pd.DataFrame,
-    tier_set: str = DEFAULT_TIER_SET
-):
+    tier_set: str = DEFAULT_TIER_SET):
     """
     Renderiza cada arma de longa distância em modo detalhado,
     com todos os campos e layout visual expandido.
     """
 
     df = df_ranged.copy()
-    df = df.fillna('')
 
     tier_map = TIER_NAME_SETS[tier_set]
 
@@ -470,7 +466,6 @@ def melee(df_dict: dict) -> None:
     """Armas Corpo-a-Corpo"""
 
     df = df_dict["melee"]
-    df = df.fillna('')
 
     # Filtros
     skill_categories = df['weapon_type'].unique().tolist()
@@ -499,7 +494,6 @@ def ranged(df_dict: dict) -> None:
     """Armas de Longa Distância"""
 
     df = df_dict["ranged"]
-    df = df.fillna('')
 
     # Filtros
     skill_categories = df['weapon_type'].unique().tolist()

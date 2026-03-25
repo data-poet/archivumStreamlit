@@ -282,11 +282,9 @@ def get_row_by_tier(df: pd.DataFrame, tier: str):
 def render_consumable_sub_page(
     df_consumables: pd.DataFrame,
     consumable_type: str,
-    tier_set: str = DEFAULT_TIER_SET
-):
+    tier_set: str = DEFAULT_TIER_SET):
 
     df = df_consumables.copy()
-    df = df.fillna('')
 
     tier_map = TIER_NAME_SETS[tier_set]
 

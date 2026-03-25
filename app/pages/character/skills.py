@@ -70,7 +70,6 @@ def skills(df_dict: dict) -> None:
     """Perícias"""
 
     df = df_dict["skills"]
-    df = df.fillna('').convert_dtypes()
 
     # Filtros
     skill_categories = df['skill_category'].unique().tolist()
@@ -152,7 +151,6 @@ def skills_cost_in_points(df_dict: dict) -> None:
     with st.expander("Perícias Físicas"):
 
         df_physical = df_dict[skills_physical]
-        df_physical = df_physical.fillna('').convert_dtypes()
         df_physical.rename(columns={"skill_final_level": "Nível de Habilidade"}, inplace=True)
 
         st.dataframe(df_physical, width='stretch', hide_index=True)
@@ -162,7 +160,6 @@ def skills_cost_in_points(df_dict: dict) -> None:
     with st.expander("Perícias Mentais"):
 
         df_mental = df_dict[skills_mental]
-        df_mental = df_mental.fillna('').convert_dtypes()
         df_mental.rename(columns={"skill_final_level": "Nível de Habilidade"}, inplace=True)
 
         st.dataframe(df_mental, width='stretch', hide_index=True)
@@ -174,7 +171,6 @@ def skills_cost_in_points(df_dict: dict) -> None:
     with st.expander("O que seu nível de perícia significa?"):
 
         df_overview = df_dict[skills_overview]
-        df_overview = df_overview.fillna('').convert_dtypes()
 
         df_sorted = df_overview.sort_values(by="skill_level")
 

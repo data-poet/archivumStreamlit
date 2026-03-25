@@ -305,7 +305,6 @@ def damage(df_dict: dict) -> None:
 
         df = (
             df_base_damage
-            .fillna('')
             .convert_dtypes()
             .sort_values(by="attacker_strength")
             .reset_index(drop=True)
