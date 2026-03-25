@@ -57,6 +57,10 @@ alchemy = st.Page(os.path.join(pages_folder, "alchemy", "alchemy.py"),
                      icon="⚗️")
 
 # Páginas sobre magia
+magic_rules = st.Page(os.path.join(pages_folder, "magic", "magic_rules.py"),
+                     title="Regras",
+                     icon="📜")
+
 grimory = st.Page(os.path.join(pages_folder, "magic", "grimory.py"),
                      title="Grimório",
                      icon="🔮")
@@ -77,7 +81,7 @@ pg = st.navigation(
         "Personagem": [attributes, adv_dis, skills],
         "Itens": [armors, weapons],
         "Alquimia": [alchemy],
-        "Magia": [grimory],
+        "Magia": [magic_rules, grimory],
         "Yrth": [calendar]
     },
     expanded=False
