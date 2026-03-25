@@ -91,12 +91,12 @@ def render_tier_limits_panel():
 
     st.dataframe(
         pd.DataFrame([{t: limits[t] for t in allowed_tiers}]),
-        use_container_width=True,
+        width='stretch',
         hide_index=True
     )
 
     with st.expander("Tabela completa", expanded=False):
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, width='stretch', hide_index=True)
 
 def render_fabrication_rules() -> None:
     """
