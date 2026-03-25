@@ -403,7 +403,6 @@ def render_armor_selection(df_armors: pd.DataFrame):
     # -----------------------------
     # PRESETS
     # -----------------------------
-
     col1, col2, col3, col4 = st.columns([1,1,1,3])
 
     if col1.button("Leve"):
@@ -422,7 +421,6 @@ def render_armor_selection(df_armors: pd.DataFrame):
     # -----------------------------
     # SLOTS
     # -----------------------------
-
     for i in range(0, len(slots), 2):
 
         col_left, col_right = st.columns(2)
@@ -435,7 +433,6 @@ def render_armor_selection(df_armors: pd.DataFrame):
 
                 df_slot = df_armors[df_armors["armor_piece_location"] == slot].copy()
 
-                # ordenar tipos
                 df_slot["armor_type"] = pd.Categorical(
                     df_slot["armor_type"],
                     categories=type_order,
@@ -446,10 +443,12 @@ def render_armor_selection(df_armors: pd.DataFrame):
 
                 armor_names = df_slot["armor_name"].unique().tolist()
 
-                # -----------------------------
-                # PRESET DEFAULT
-                # -----------------------------
+                armor_key = f"armor_select_{slot}"
+                tier_key = f"tier_select_{slot}"
 
+                # -----------------------------
+                # DEFINIR DEFAULT VIA PRESET
+                # -----------------------------
                 default_armor = armor_names[0]
 
                 if preset:
@@ -457,26 +456,33 @@ def render_armor_selection(df_armors: pd.DataFrame):
                     if not df_preset.empty:
                         default_armor = df_preset.iloc[0]["armor_name"]
 
+                # aplica preset no session_state (CORREÇÃO PRINCIPAL)
+                if armor_key not in st.session_state or st.session_state.get("preset_applied") != preset:
+                    st.session_state[armor_key] = default_armor
+
                 sub1, sub2 = st.columns(2)
 
                 with sub1:
                     armor_choice = st.selectbox(
                         "Armadura",
                         armor_names,
-                        index=armor_names.index(default_armor),
-                        key=f"armor_select_{slot}"
+                        key=armor_key
                     )
 
                 df_armor = df_slot[df_slot["armor_name"] == armor_choice]
 
                 tiers = df_armor["armor_tier"].tolist()
 
+                default_tier = "Comum" if "Comum" in tiers else tiers[0]
+
+                if tier_key not in st.session_state or st.session_state.get("preset_applied") != preset:
+                    st.session_state[tier_key] = default_tier
+
                 with sub2:
                     tier_choice = st.selectbox(
                         "Tier",
                         tiers,
-                        index=tiers.index("Comum") if "Comum" in tiers else 0,
-                        key=f"tier_select_{slot}"
+                        key=tier_key
                     )
 
                 row = df_armor[df_armor["armor_tier"] == tier_choice].iloc[0]
@@ -493,6 +499,9 @@ def render_armor_selection(df_armors: pd.DataFrame):
                     st.write(f"Preço: **{row['armor_price']}**")
 
         st.markdown("---")
+
+    # marca qual preset já foi aplicado
+    st.session_state["preset_applied"] = preset
 
     return pd.DataFrame(selected_rows)
 
@@ -601,7 +610,7 @@ def render_build_summary(df_build: pd.DataFrame, shield_row=None):
 
     st.dataframe(
         df_view,
-        use_container_width=True,
+        width='stretch',
         hide_index=True
     )
 
