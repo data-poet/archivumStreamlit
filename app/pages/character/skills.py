@@ -61,7 +61,7 @@ def render_skills_list(df: pd.DataFrame):
          'skill_base_status', 'skill_source_book', 'skill_source_page']
     ].sort_values('skill_id')
 
-    st.dataframe(compact_df, use_container_width=True)
+    st.dataframe(compact_df, width='stretch')
 
 # ------------------------------------------------------------------------------------------------ #
 #   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
@@ -155,7 +155,7 @@ def skills_cost_in_points(df_dict: dict) -> None:
         df_physical = df_physical.fillna('').convert_dtypes()
         df_physical.rename(columns={"skill_final_level": "Nível de Habilidade"}, inplace=True)
 
-        st.dataframe(df_physical, use_container_width=True, hide_index=True)
+        st.dataframe(df_physical, width='stretch', hide_index=True)
 
     # ----------------------------------------------------------------------------------------- #
 
@@ -165,7 +165,7 @@ def skills_cost_in_points(df_dict: dict) -> None:
         df_mental = df_mental.fillna('').convert_dtypes()
         df_mental.rename(columns={"skill_final_level": "Nível de Habilidade"}, inplace=True)
 
-        st.dataframe(df_mental, use_container_width=True, hide_index=True)
+        st.dataframe(df_mental, width='stretch', hide_index=True)
 
     # ----------------------------------------------------------------------------------------- #
     # 1.1 SIGNIFICADO DO NÍVEL DE HABILIDADE COM AS PERÍCIAS

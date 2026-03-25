@@ -19,9 +19,23 @@ def render_view_full(view: str ,df: pd.DataFrame):
     Renderiza cada as vantagens e desvantagens em modo detalhado,
     com todos os campos e layout visual expandido.
     """
+
     df_sorted = df.sort_values(by=f"{view}_id")
 
-    for _, row in df_sorted.iterrows():
+    # Filtros
+    view_category = df_sorted[f'{view}_type'].unique().tolist()
+
+    selected_category = st.selectbox(
+        "Selecione uma categoria:",
+        view_category,
+        index=0
+    )
+
+    st.markdown("***")
+
+    df_category = df_sorted[df_sorted[f'{view}_type'] == selected_category]
+
+    for _, row in df_category.iterrows():
 
         with st.expander(f"{row[f'{view}_box_name']}"):
 
@@ -51,7 +65,7 @@ def render_view_list(view: str, df: pd.DataFrame):
          f'{view}_source_book', f'{view}_source_page']
     ].sort_values(f'{view}_id')
 
-    st.dataframe(compact_df, use_container_width=True)
+    st.dataframe(compact_df, width='stretch')
 
 # ------------------------------------------------------------------------------------------------ #
 #   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
@@ -84,8 +98,6 @@ def advantages(df_dict: dict) -> None:
         if df.empty:
             st.warning(f"Nenhuma Vantagem encontrado com os filtros aplicados.")
             return
-
-    st.markdown("***")
 
     # Sidebar
     st.sidebar.header("⚙️ Opções de Exibição")
@@ -135,8 +147,6 @@ def disadvantages(df_dict: dict) -> None:
         if df.empty:
             st.warning(f"Nenhuma Vantagem encontrado com os filtros aplicados.")
             return
-
-    st.markdown("***")
 
     # Sidebar
     st.sidebar.header("⚙️ Opções de Exibição")

@@ -373,7 +373,7 @@ def damage(df_dict: dict) -> None:
 
         st.dataframe(
             df_pagina,
-            use_container_width=True,
+            width='stretch',
             hide_index=True
         )
 
