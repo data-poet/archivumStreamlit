@@ -528,7 +528,7 @@ def ranged(df_dict: dict) -> None:
 #FUNÇÃO MAIN
 
 def main():
-    df_dict = read_excel_data('weapons_with_tiers.xlsx')
+    df_dict = read_excel_data('weapons.xlsx')
 
     options = ["Armas Corpo-a-Corpo", "Armas de Longa Distância"]
 
