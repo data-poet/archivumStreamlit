@@ -16,7 +16,7 @@ from app.utils import TIER_CONFIG, TIER_COLORS, TIER_ORDER, TIER_NAME_SETS
 DEFAULT_TIER_SET = "qualidade"
 
 from app.src.data_loader import read_excel_data
-from app.components.filters import dynamic_filters, search_box, diff_text_granular
+from app.components.filters import diff_text_granular
 
 # ------------------------------------------------------------------------------------------------ #
 # FUNÇÕES AUXILIARES DAS ARMADURAS
@@ -620,8 +620,6 @@ def armors(df_dict: dict) -> None:
 
     options = ["Cabeça", "Tronco", "Braços", "Mãos", "Pernas", "Pés"]
 
-    st.header("Armaduras", divider="grey")
-
     selection = option_menu(
         menu_title=None,
         options=options,
@@ -633,7 +631,7 @@ def armors(df_dict: dict) -> None:
 
     df = df_armors[df_armors["armor_piece_location"] == selection]
 
-    st.markdown("***")
+    st.header("Armaduras", divider="grey")
 
     # Função de visualização
     render_armor_page(df)
@@ -691,11 +689,9 @@ def main():
 
     if selection == options[0]:
         armors(df_dict)
-
-    if selection == options[1]:
+    elif selection == options[1]:
         shields(df_dict)
-
-    if selection == options[2]:
+    elif selection == options[2]:
         armor_build(df_dict)
 
 # ------------------------------------------------------------------------------------------------ #

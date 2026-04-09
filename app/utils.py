@@ -25,11 +25,11 @@ TIER_COLORS = {
 }
 
 TIER_CONFIG = {
-    1: {"min_nh": 8, "divisor": 4},
-    2: {"min_nh": 10, "divisor": 5},
-    3: {"min_nh": 12, "divisor": 6},
-    4: {"min_nh": 14, "divisor": 7},
-    5: {"min_nh": 16, "divisor": 16},
+    1: {"min_nh": 12, "divisor": 6},
+    2: {"min_nh": 14, "divisor": 7},
+    3: {"min_nh": 16, "divisor": 8},
+    4: {"min_nh": 18, "divisor": 9},
+    5: {"min_nh": 20, "divisor": 10},
 }
 
 TIER_NAME_SETS = {
@@ -95,7 +95,7 @@ def get_project_folder(folder_name: str = None) -> str:
         "logs": os.path.join("app", "logs"),
         "data": os.path.join("app", "data"),
         "app": "app",
-        "assets": os.path.join("app", "asseets"),
+        "assets": os.path.join("app", "assets"),
         "pages": os.path.join("app", "pages"),
         "components": os.path.join("app", "components"),
     }

@@ -486,7 +486,7 @@ def melee(df_dict: dict) -> None:
             column=f"weapon_name"
         )
 
-    st.subheader(selected_category, divider="grey")
+    st.header(selected_category, divider="grey")
 
     render_melee_weapons(df)
 
@@ -514,7 +514,7 @@ def ranged(df_dict: dict) -> None:
             column=f"weapon_name"
         )
 
-    st.subheader(selected_category, divider="grey")
+    st.header(selected_category, divider="grey")
 
     render_ranged_weapons(df)
 

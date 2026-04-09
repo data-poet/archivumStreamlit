@@ -10,8 +10,6 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 
 # RELATIVE IMPORTS
 from app.src.data_loader import read_excel_data
-from app.components.filters import dynamic_filters, search_box
-
 # ------------------------------------------------------------------------------------------------ #
 #   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
 

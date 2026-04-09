@@ -76,7 +76,7 @@ def main():
     st.dataframe(
         df_months,
         hide_index=True,
-        use_container_width=True
+        width='stretch'
     )
 
 

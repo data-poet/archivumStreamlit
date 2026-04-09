@@ -525,13 +525,13 @@ def dodge() -> None:
         Sua defesa **Esquiva** é calculada como:
 
         $$
-        \text{Esquiva} = \lfloor \text{Velocidade Básica} + 3 \rfloor
+        \text{Esquiva} = \text{Deslocamento} + (\text{Modificador de Peso} + 4)
         $$
 
-        - Por exemplo, se sua Velocidade Básica for 5,25:
+        - Por exemplo, se sua Deslocamento for 5 e seu Modificador de Peso for -2:
 
         $$
-        \text{Esquiva} = \lfloor 5,25 + 3 \rfloor = 8
+        \text{Esquiva} = 5 + (-2+4) = 7
         $$
 
         > ⚠️ A carga do personagem pode reduzir a Esquiva (veja **Carga e Movimento**).
