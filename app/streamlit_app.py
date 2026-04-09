@@ -41,8 +41,16 @@ adv_dis = st.Page(os.path.join(pages_folder, "character", "advantages_and_disadv
 skills = st.Page(os.path.join(pages_folder, "character", "skills.py"),
                      title="Perícias",
                      icon="🛠️")
+# Páginas sobre combate
+combat_rules = st.Page(os.path.join(pages_folder, "combat", "combat_rules.py"),
+                     title="Regras",
+                     icon="📜")
 
 # Páginas sobre itens
+adventure_gear = st.Page(os.path.join(pages_folder, "itens", "adventure_gear.py"),
+                     title="Itens para Aventuras",
+                     icon="🏕️")
+
 armors = st.Page(os.path.join(pages_folder, "itens", "armors.py"),
                      title="Armaduras",
                      icon="🛡️")
@@ -79,7 +87,8 @@ pg = st.navigation(
     {
         "Archivum": [home],
         "Personagem": [attributes, adv_dis, skills],
-        "Itens": [armors, weapons],
+        "Combate":[combat_rules],
+        "Itens": [adventure_gear, armors, weapons],
         "Alquimia": [alchemy],
         "Magia": [magic_rules, grimory],
         "Yrth": [calendar]
