@@ -21,43 +21,24 @@ utils_directory = os.path.dirname(os.path.dirname(__file__)).rstrip('.')
 # ------------------------------------------------------------------------------------------------ #
 # FUNÇÕES
 
-def get_project_folder(folder_name: str = None) -> str:
+def format_rules(rules: str) -> str:
     """
-    Retorna o caminho absoluto de uma pasta específica do projeto.
-
-    Args:
-        folder_name (str, opcional): Nome da pasta cuja rota deve ser retornada.
-                                     Se None, retorna o diretório base do projeto.
-
-    Returns:
-        str: Caminho absoluto para a pasta solicitada.
-
-    Raises:
-        Exception: Caso ocorra erro ao montar o caminho.
+    Formata o texto das regras para melhor exibição em markdown.
     """
 
-    # Mapeamento simples de nomes para caminhos relativos
-    folders = {
-        None: "",
-        "tests": "tests",
-        "logs": os.path.join("app", "logs"),
-        "data": os.path.join("app", "data"),
-        "app": "app",
-        "assets": os.path.join("app", "asseets"),
-        "pages": os.path.join("app", "pages"),
-        "components": os.path.join("app", "components"),
-    }
+    if not isinstance(rules, str):
+        return ""
 
-    try:
-        if folder_name not in folders:
-            raise ValueError(f"Pasta desconhecida: {folder_name}")
+    # Remove aspas extras comuns de CSV/export
+    rules = rules.strip().strip('"')
 
-        return os.path.join(utils_directory, folders[folder_name])
+    # Garante quebra de linha correta
+    lines = [line.strip() for line in rules.split("\n") if line.strip()]
 
-    except Exception as e:
-        print(f"Erro ao obter pasta: {e}")
-        raise
+    # Converte para markdown (lista)
+    formatted = "\n".join(lines)
 
+    return formatted
 
 # ------------------------------------------------------------------------------------------------ #
 # FUNÇÕES UTILITÁRIAS PARA O STREAMLIT
