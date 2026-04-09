@@ -64,7 +64,7 @@ def render_skills_list(df: pd.DataFrame):
     st.dataframe(compact_df, width='stretch')
 
 # ------------------------------------------------------------------------------------------------ #
-#   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
+# FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
 
 def skills(df_dict: dict) -> None:
     """Perícias"""
@@ -190,7 +190,7 @@ def skills_cost_in_points(df_dict: dict) -> None:
             col3.write(row["skill_level_description"])
 
 # ------------------------------------------------------------------------------------------------ #
-#FUNÇÃO MAIN
+# FUNÇÃO MAIN
 
 def main():
     """

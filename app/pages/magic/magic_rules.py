@@ -10,8 +10,9 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 
 # RELATIVE IMPORTS
 from app.src.data_loader import read_excel_data
+
 # ------------------------------------------------------------------------------------------------ #
-#   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
+# FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
 
 def skills_cost_in_points(df_skills: dict, df_magic_rules: dict) -> None:
     """
@@ -60,7 +61,7 @@ def skills_cost_in_points(df_skills: dict, df_magic_rules: dict) -> None:
             col4.write(row["spell_cast_form"])
 
 # ------------------------------------------------------------------------------------------------ #
-#FUNÇÃO MAIN
+# FUNÇÃO MAIN
 
 def main():
     """

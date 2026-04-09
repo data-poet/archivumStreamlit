@@ -460,7 +460,7 @@ def render_ranged_weapons(
             st.markdown(f"**Descrição:**\n\n{h('weapon_description')}", unsafe_allow_html=True)
 
 # ------------------------------------------------------------------------------------------------ #
-#   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
+# FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
 
 def melee(df_dict: dict) -> None:
     """Armas Corpo-a-Corpo"""
@@ -519,7 +519,7 @@ def ranged(df_dict: dict) -> None:
     render_ranged_weapons(df)
 
 # ------------------------------------------------------------------------------------------------ #
-#FUNÇÃO MAIN
+# FUNÇÃO MAIN
 
 def main():
     df_dict = read_excel_data('weapons.xlsx')

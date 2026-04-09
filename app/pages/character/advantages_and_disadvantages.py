@@ -68,7 +68,7 @@ def render_view_list(view: str, df: pd.DataFrame):
     st.dataframe(compact_df, width='stretch')
 
 # ------------------------------------------------------------------------------------------------ #
-#   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
+# FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
 
 def advantages(df_dict: dict) -> None:
     """Vantagens"""
@@ -167,7 +167,7 @@ def disadvantages(df_dict: dict) -> None:
         return
 
 # ------------------------------------------------------------------------------------------------ #
-#FUNÇÃO MAIN
+# FUNÇÃO MAIN
 
 def main():
     """

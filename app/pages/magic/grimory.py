@@ -357,7 +357,7 @@ def render_spells_grimory(
                         st.markdown(f"**Observação:**\n\n{h('spell_observation')}", unsafe_allow_html=True)
 
 # ------------------------------------------------------------------------------------------------ #
-#   FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
+# FUNÇÕES DE VISUALIZAÇÃO DO STREAMLIT
 
 def grimory(df_dict: dict):
 
@@ -493,7 +493,7 @@ def archetype_overview():
                         )
 
 # ------------------------------------------------------------------------------------------------ #
-#FUNÇÃO MAIN
+# FUNÇÃO MAIN
 
 def main():
     """

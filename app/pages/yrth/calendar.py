@@ -58,7 +58,7 @@ def read_ytarria_calendar() -> tuple[pd.DataFrame, pd.DataFrame]:
     return df_months, df_days
 
 # ------------------------------------------------------------------------------------------------ #
-#   #FUNÇÃO MAIN
+# FUNÇÃO MAIN
 
 def main():
     """
@@ -78,7 +78,6 @@ def main():
         hide_index=True,
         width='stretch'
     )
-
 
 # ------------------------------------------------------------------------------------------------ #
 main()
