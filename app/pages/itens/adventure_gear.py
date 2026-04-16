@@ -25,7 +25,7 @@ def adventure_gear(df_dict: dict):
     com expanders aninhados.
     """
 
-    df = df_dict["adventure_gear"]
+    df = df_dict["db_adventure_gear"]
 
     st.header("Sobrevivência", divider="grey")
 
@@ -64,7 +64,7 @@ def adventure_gear(df_dict: dict):
 
 def main():
 
-    df_dict = read_excel_data('gear.xlsx')
+    df_dict = read_excel_data('db_itens_adventure_gear.xlsx')
 
     options = ["Sobrevivência"]
 

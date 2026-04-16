@@ -616,7 +616,7 @@ def render_build_summary(df_build: pd.DataFrame, shield_row=None):
 def armors(df_dict: dict) -> None:
     """Armaduras"""
 
-    df_armors = df_dict["armors"]
+    df_armors = df_dict["db_armors"]
 
     options = ["Cabeça", "Tronco", "Braços", "Mãos", "Pernas", "Pés"]
 
@@ -640,8 +640,8 @@ def armor_build(df_dict):
 
     st.header("Montar Conjunto de Armadura", divider="grey")
 
-    df_armors = df_dict["armors"].copy()
-    df_shields = df_dict["shields"].copy()
+    df_armors = df_dict["db_armors"].copy()
+    df_shields = df_dict["db_shields"].copy()
 
     with st.expander("Seleção de armadura por slot e tier"):
         df_build = render_armor_selection(df_armors)
@@ -662,7 +662,7 @@ def armor_build(df_dict):
 def shields(df_dict: dict) -> None:
     """Armaduras"""
 
-    df_shields = df_dict["shields"]
+    df_shields = df_dict["db_shields"]
 
     st.header("Escudos", divider="grey")
 
@@ -675,7 +675,7 @@ def shields(df_dict: dict) -> None:
 
 def main():
 
-    df_dict = read_excel_data('armors.xlsx')
+    df_dict = read_excel_data('db_itens_armors.xlsx')
 
     options = ["Armaduras", "Escudos", "Montar Build", ]
 

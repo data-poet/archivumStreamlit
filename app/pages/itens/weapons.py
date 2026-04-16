@@ -465,7 +465,7 @@ def render_ranged_weapons(
 def melee(df_dict: dict) -> None:
     """Armas Corpo-a-Corpo"""
 
-    df = df_dict["melee"]
+    df = df_dict["db_melee"]
 
     # Filtros
     skill_categories = df['weapon_type'].unique().tolist()
@@ -493,7 +493,7 @@ def melee(df_dict: dict) -> None:
 def ranged(df_dict: dict) -> None:
     """Armas de Longa Distância"""
 
-    df = df_dict["ranged"]
+    df = df_dict["db_ranged"]
 
     # Filtros
     skill_categories = df['weapon_type'].unique().tolist()
@@ -522,7 +522,7 @@ def ranged(df_dict: dict) -> None:
 # FUNÇÃO MAIN
 
 def main():
-    df_dict = read_excel_data('weapons.xlsx')
+    df_dict = read_excel_data('db_itens_weapons.xlsx')
 
     options = ["Armas Corpo-a-Corpo", "Armas de Longa Distância"]
 
