@@ -73,7 +73,7 @@ def render_view_list(view: str, df: pd.DataFrame):
 def advantages(df_dict: dict) -> None:
     """Vantagens"""
 
-    df = df_dict["advantages"]
+    df = df_dict["db_advantages"]
 
     # Filtros
     with st.expander(f"🎯 Filtros de Vantages"):
@@ -121,7 +121,7 @@ def advantages(df_dict: dict) -> None:
 def disadvantages(df_dict: dict) -> None:
     """Desvantagens"""
 
-    df = df_dict["disadvantages"]
+    df = df_dict["db_disadvantages"]
 
     # Filtros
     with st.expander(f"🎯 Filtros de Desvantagens"):
@@ -175,7 +175,7 @@ def main():
     o grimório e a visão simples dos arquétipos.
     """
 
-    df_dict = read_excel_data("advantages_and_disadvantages.xlsx")
+    df_dict = read_excel_data("db_character_traits.xlsx")
 
     options = ["Vantagens", "Desvantagens"]
 

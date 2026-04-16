@@ -36,6 +36,12 @@ def _normalize_string(value):
 
         return value
 
+def clean_dataframe(df):
+    for col in df.columns:
+        if df[col].dtype == "object":
+            df[col] = df[col].astype(str)
+    return df
+
 # ------------------------------------------------------------------------------------------------ #
 # CLASSE PARA LEITURA DE EXCEL
 
@@ -97,6 +103,8 @@ class ExcelReader:
 
                 for col in str_cols:
                     df[col] = df[col].apply(_normalize_string)
+
+                df = clean_dataframe(df)
 
                 sheets_dict[sheet] = df
 

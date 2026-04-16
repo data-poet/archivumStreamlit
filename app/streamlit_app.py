@@ -34,7 +34,7 @@ attributes = st.Page(os.path.join(pages_folder, "character", "attributes.py"),
                      title="Atributos",
                      icon="📝")
 
-adv_dis = st.Page(os.path.join(pages_folder, "character", "advantages_and_disadvantages.py"),
+traits = st.Page(os.path.join(pages_folder, "character", "traits.py"),
                      title="Vantagens e Desvantagens",
                      icon="🔰")
 
@@ -86,7 +86,7 @@ pg = st.navigation(
     pages =
     {
         "Archivum": [home],
-        "Personagem": [attributes, adv_dis, skills],
+        "Personagem": [attributes, traits, skills],
         "Combate":[combat_rules],
         "Itens": [adventure_gear, armors, weapons],
         "Alquimia": [alchemy],
