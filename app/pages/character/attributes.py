@@ -299,7 +299,7 @@ def damage(df_dict: dict) -> None:
     ⚠️ Armas e ataques específicos podem modificar os valores.
                 """)
 
-    df_base_damage = df_dict["base_damage"]
+    df_base_damage = df_dict["db_base_damage"]
 
     with st.expander("Tabela de Dano"):
 
@@ -717,7 +717,7 @@ def primary_attributes() -> None:
 # FUNÇÃO MAIN
 
 def main():
-    df_dict = read_excel_data("attributes.xlsx")
+    df_dict = read_excel_data("db_character_attributes.xlsx")
 
     options = ["Atributos Primários", "Atributos Secundários"]
 

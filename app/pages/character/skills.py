@@ -69,7 +69,7 @@ def render_skills_list(df: pd.DataFrame):
 def skills(df_dict: dict) -> None:
     """Perícias"""
 
-    df = df_dict["skills"]
+    df = df_dict["db_skills"]
 
     # Filtros
     skill_categories = df['skill_category'].unique().tolist()
@@ -138,9 +138,9 @@ def skills_cost_in_points(df_dict: dict) -> None:
     Função simples que exibe um as regras de custo em pontos e aperfeiçoamento de perícias.
     """
 
-    skills_overview = "overview"
-    skills_mental = "mental"
-    skills_physical = "physical"
+    skills_overview = "db_skill_overview"
+    skills_mental = "db_skill_mental"
+    skills_physical = "db_skill_physical"
 
     st.subheader("Custo em Pontos", divider="grey")
 
@@ -198,7 +198,7 @@ def main():
     o grimório e a visão simples dos arquétipos.
     """
 
-    df_dict = read_excel_data('skills.xlsx')
+    df_dict = read_excel_data('db_character_skills.xlsx')
 
     options = ["Aprendendo Perícias", "Perícias"]
 
