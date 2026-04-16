@@ -279,7 +279,7 @@ def toxicity() -> None:
             $$
 
             $$
-            \text{Toxicidade} = \frac{90}{3} = 37
+            \text{Toxicidade} = \frac{90}{3} = 30
             $$
         """)
 
