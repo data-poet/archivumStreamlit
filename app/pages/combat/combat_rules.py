@@ -18,6 +18,45 @@ from app.components.filters import format_rules
 assets_folder = get_project_folder('assets')
 
 # ------------------------------------------------------------------------------------------------ #
+# CONSTANTES
+
+ORDER = [
+    # 1. Movimento e Posicionamento
+    "Deslocamento",
+    "Mudança de Direção",
+    "Mudança de Posição",
+
+    # 2. Preparação e Ações Técnicas
+    "Preparar",
+    "Recarregar",
+    "Mirar",
+    "Concentrar",
+
+    # 3. Ataque Direto
+    "Atacar",
+    "Atacar com Duas Armas",
+    "Ataque Total",
+
+    # 4. Controle e Vantagem
+    "Finta",
+    "Avaliar",
+    "Aguardar",
+
+    # 5. Defesa
+    "Defesa Total",
+    "Defesa Ativa",
+    "Esquiva",
+    "Bloqueio",
+    "Aparar",
+
+    # 6. Ações Combinadas
+    "Avançar e Preparar",
+    "Avançar e Atacar",
+    "Avançar e Concentrar",
+    "Avançar e Aguardar",
+]
+
+# ------------------------------------------------------------------------------------------------ #
 # FUNÇÕES AUXILIARES
 
 def render_impact_points(df: pd.DataFrame):
@@ -187,12 +226,11 @@ def manuvers(df_dict: dict, n_cols: int = 2):
     - df_dict: dict onde a chave é o nome do conjunto e o valor é o dataframe de manobras
     """
 
-    df = df_dict['maneuvers']
+    df = df_dict['db_maneuvers']
 
-    # Ordenação opcional
-    df = df.sort_values(by="manuver_id").reset_index(drop=True)
+    df["order"] = df["manuver_name"].apply(lambda x: ORDER.index(x))
+    df = df.sort_values(by="order").drop(columns="order").reset_index(drop=True)
 
-    # Exibição
     st.header("Manobras", divider='grey')
 
     for i in range(0, len(df), n_cols):
@@ -212,7 +250,7 @@ def impact_points(df_dict: dict):
     - lista detalhada (expanders)
     """
 
-    df = df_dict['impact_points']
+    df = df_dict['db_impact_points']
     image_path = os.path.join(assets_folder, "impact_points.png")
 
     # ----------- Topo: imagem + redutores -----------
@@ -273,7 +311,7 @@ def combat_info(df_dict: dict):
     Renderiza informações gerais de combate em expanders.
     """
 
-    df = df_dict['combat']
+    df = df_dict['db_combat']
 
     # Ordenação opcional (caso tenha coluna futura tipo ID)
     df = df.reset_index(drop=True)
@@ -291,8 +329,8 @@ def throw_rules(df_dict: dict):
 
     st.header("Arremesso", divider="grey")
 
-    df_distance = df_dict["throw_distance"]
-    df_damage = df_dict["throw_damage"]
+    df_distance = df_dict["db_throw_distance"]
+    df_damage = df_dict["db_throw_damage"]
 
     col1, col2 = st.columns(2)
 
@@ -312,7 +350,7 @@ def throw_rules(df_dict: dict):
 #FUNÇÃO MAIN
 
 def main():
-    df_dict = read_excel_data('combat_rules.xlsx')
+    df_dict = read_excel_data('db_combat_rules.xlsx')
 
     options = ["Informações", "Manobras", "Locais de Acerto", "Arremesso"]
 
