@@ -501,7 +501,7 @@ def main():
     o grimório e a visão simples dos arquétipos.
     """
 
-    df_dict = read_excel_data('grimory.xlsx')
+    df_dict = read_excel_data('db_magic_grimory.xlsx')
 
     options = ["Arquétipos", "Grimório"]
 

@@ -19,8 +19,8 @@ def skills_cost_in_points(df_skills: dict, df_magic_rules: dict) -> None:
     Função simples que exibe um as regras de custo em pontos e aperfeiçoamento de perícias.
     """
 
-    spell_levels = "spell_level"
-    skills_mental = "mental"
+    spell_levels = "db_spell_level"
+    skills_mental = "db_skill_mental"
 
     st.subheader("Aprendendo Feitiços", divider="grey")
 
@@ -69,8 +69,8 @@ def main():
     o grimório e a visão simples dos arquétipos.
     """
 
-    df_skills = read_excel_data('skills.xlsx')
-    df_magic_rules = read_excel_data('magic_rules.xlsx')
+    df_skills = read_excel_data('db_character_skills.xlsx')
+    df_magic_rules = read_excel_data('db_magic_rules.xlsx')
 
     options = ["Aprendizado", "Alcance e Forma"]
 
