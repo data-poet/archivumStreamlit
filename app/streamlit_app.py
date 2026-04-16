@@ -60,7 +60,11 @@ weapons = st.Page(os.path.join(pages_folder, "itens", "weapons.py"),
                      icon="⚔️")
 
 # Páginas sobre alquimia
-alchemy = st.Page(os.path.join(pages_folder, "alchemy", "alchemy.py"),
+alchemy_rules = st.Page(os.path.join(pages_folder, "alchemy", "alchemy_rules.py"),
+                     title="Regras",
+                     icon="📜")
+
+consumables = st.Page(os.path.join(pages_folder, "alchemy", "consumables.py"),
                      title="Consumíveis",
                      icon="⚗️")
 
@@ -89,7 +93,7 @@ pg = st.navigation(
         "Personagem": [attributes, traits, skills],
         "Combate":[combat_rules],
         "Itens": [adventure_gear, armors, weapons],
-        "Alquimia": [alchemy],
+        "Alquimia": [alchemy_rules, consumables],
         "Magia": [magic_rules, grimory],
         "Yrth": [calendar]
     },
