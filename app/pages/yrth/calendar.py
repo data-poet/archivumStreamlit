@@ -24,7 +24,7 @@ data_folder = get_project_folder('data')
 def read_ytarria_calendar() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     # Caminho fixo dos arquivos
-    file_path = os.path.join(data_folder, "calendar.xlsx")
+    file_path = os.path.join(data_folder, "db_yrth_calendar.xlsx")
 
     # Inicializa o leitor
     excel_reader = ExcelReader(log_dir=logs_folder, file_path=file_path)
@@ -37,7 +37,7 @@ def read_ytarria_calendar() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     # --- Meses ---
     df_months = (
-        df_dict["months"]
+        df_dict["db_months"]
         .loc[:, ["real_world_month_name", "ytarria_month_name"]]
         .rename(columns={
             "real_world_month_name": "Mês",
@@ -47,7 +47,7 @@ def read_ytarria_calendar() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     # --- Dias da semana ---
     df_days = (
-        df_dict["weekdays"]
+        df_dict["db_weekdays"]
         .loc[:, ["real_word_day_name", "ytarria_day_name"]]
         .rename(columns={
             "real_word_day_name": "Dia",
