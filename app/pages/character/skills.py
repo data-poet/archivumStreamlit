@@ -37,7 +37,7 @@ def render_skills_full(df: pd.DataFrame):
 
             col1, col2 = st.columns(2)
             with col1: st.write(f"**Dificuldade:** {row['skill_difficulty']}")
-            with col2: st.write(f"**Status Base:** {row['skill_base_attributes']}")
+            with col2: st.write(f"**Status Base:** {row['skill_base_attribute']}")
 
             col1, col2 = st.columns(2)
             with col1: st.write(f"**Nível Pré-definido:** {row['skill_pre_defined_level']}")
@@ -58,7 +58,7 @@ def render_skills_list(df: pd.DataFrame):
 
     compact_df = df[
         ['skill_id', 'skill_name', 'skill_type', 'skill_difficulty',
-         'skill_base_attributes', 'skill_source_book', 'skill_source_page']
+         'skill_base_attribute', 'skill_source_book', 'skill_source_page']
     ].sort_values('skill_id')
 
     st.dataframe(compact_df, width='stretch')
