@@ -436,14 +436,6 @@ def render_ranged_weapons(
             col1, col2 = st.columns(2)
 
             with col1:
-                st.markdown(f"**Preço:** {h('weapon_price')} moedas", unsafe_allow_html=True)
-
-            with col2:
-                st.markdown(f"**Preço da Munição:** {h('weapon_ammo_price')} moedas", unsafe_allow_html=True)
-
-            col1, col2 = st.columns(2)
-
-            with col1:
                 st.markdown(f"**ST Mínima:** {h('weapon_min_strength')}", unsafe_allow_html=True)
 
             with col2:
@@ -456,6 +448,11 @@ def render_ranged_weapons(
 
             with col2:
                 st.markdown(f"**Distância Max:** {h('weapon_max_distance')}", unsafe_allow_html=True)
+
+            with col1:
+                st.markdown(f"**Preço:** {h('weapon_price')} moedas", unsafe_allow_html=True)
+
+            col1, col2 = st.columns(2)
 
             st.markdown(f"**Descrição:**\n\n{h('weapon_description')}", unsafe_allow_html=True)
 
